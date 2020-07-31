@@ -1,9 +1,10 @@
 import React from 'react'
+import style from './child.scss'
 
 const Child = () => {
   return (
-    <div>
-      <span>hello child.js</span>
+    <div className={style.wrapper}>
+      <span className={style.child}>hello child.js</span>
     </div>
   )
 }

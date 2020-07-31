@@ -21,6 +21,21 @@ module.exports = {
       {
         test: /\.jsx?$/,
         use: 'babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[path][name]__[local]--[hash:base64:5]'
+              }
+            }
+          },
+          'postcss-loader'
+        ]
       }
     ]
   },
