@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import { HashRouter, Switch } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import routes from './routes'
+import Header from './components/header'
 
 // import Child from './child'
 // import Info from './info'
@@ -9,7 +10,7 @@ import routes from './routes'
 const Root = () => {
   return (
     <div>
-      <span>hello root.js</span>
+      <Header title={'hello'} content={'root.js'} />
       <Suspense fallback={<div>Loading...</div>}>
         <HashRouter>
           <Switch>

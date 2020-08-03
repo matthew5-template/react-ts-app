@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import venom from './assets/venom.png'
+import venom from '../assets/venom.png'
 
 class Info extends Component {
   state = {

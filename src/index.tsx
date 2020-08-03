@@ -7,9 +7,9 @@ console.log('refresh')
 const appNode = document.getElementById('app')
 // const HotRoot = hot(Root)
 ReactDom.render(<Root />, appNode)
-
-if (module.hot) {
-  module.hot.accept('./root', function () {
+const hot = (module as any).hot
+if (hot) {
+  hot.accept('./root', function () {
     ReactDom.render(<Root />, appNode)
   })
 }
