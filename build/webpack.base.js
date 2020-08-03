@@ -12,6 +12,9 @@ module.exports = {
     chunkFilename: 'js/[name]_[hash:6].js',
     publicPath: '/' // filename prefix path => js/main.js
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json']
+  },
   devServer: {
     host: 'localhost',
     port: 3000,
@@ -20,7 +23,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(ts|js)x?$/,
         use: 'babel-loader'
       },
       {
