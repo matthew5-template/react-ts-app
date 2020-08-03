@@ -10,25 +10,4 @@ const Child = () => {
   )
 }
 
-class Child2 extends Component {
-  state = {
-    count: 0
-  }
-
-  onChange = () => {
-    this.setState({
-      count: this.state.count + 1
-    })
-  }
-
-  render() {
-    const { count } = this.state
-    return (
-      <div className={style.wrapper} onClick={this.onChange}>
-        <span className={style.child}>hello child2.js {count}</span>
-      </div>
-    )
-  }
-}
-
 export default Child

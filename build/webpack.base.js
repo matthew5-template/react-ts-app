@@ -9,7 +9,7 @@ module.exports = {
   output: {
     filename: 'js/[name].js',
     path: path.join(__dirname, '../dist'), // must be absolute path
-    // chunkFilename: 'js/[name].js',
+    chunkFilename: 'js/[name]_[hash:6].js',
     publicPath: '/' // filename prefix path => js/main.js
   },
   devServer: {
