@@ -37,6 +37,18 @@ module.exports = {
           },
           'postcss-loader'
         ]
+      },
+      {
+        test: /\.(jpe?g|png|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1024,
+              name: 'img/[name]_[hash:6].[ext]'
+            }
+          }
+        ]
       }
     ]
   },

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import venom from './assets/venom.png'
 
 class Info extends Component {
   state = {
@@ -16,6 +17,7 @@ class Info extends Component {
     return (
       <div onClick={this.onChange}>
         <span>hello info.js {count}</span>
+        <img src={venom} style={{ width: 60 }} />
       </div>
     )
   }
