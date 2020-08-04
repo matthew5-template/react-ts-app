@@ -1,5 +1,7 @@
-[code repo](https://github.com/matthew5-template/react-ts-app)
-### 1. 首先引入react react-dom
+code repo: [https://github.com/matthew5-template/react-ts-app](https://github.com/matthew5-template/react-ts-app)
+branch: basic
+
+### 1. 引入react react-dom
 `yarn add react react-dom`
 ```
 // package.json
@@ -31,8 +33,7 @@ import Root from './root'
 const appNode = document.getElementById('app')
 ReactDom.render(<Root />, appNode)
 ```
-### 3. 如何运行react代码
-##### 加入webpack编译
+### 3. 使用webpack编译代码
 - 引入reference
 ```
 "devDependencies": {
@@ -159,8 +160,40 @@ rules: [
       }
     ]
 ```
+### 5. 支持image等文件引用
+`yarn add file-loader url-loader -D`
+url-loader可以将文件优先转为base64 
+当超过设置的limit时优先使用file-loader处理，limit单位为bytes
+```
+"devDependencies": {
+    "file-loader": "^6.0.0",
+    "url-loader": "^4.1.0",
+}
 
-### 5. 加入路由router
+import venom from './assets/venom.png'
+<img src={venom} style={{ width: 60 }} />
+```
+webpack中添加rule配置
+```
+module: {
+  rules: [
+      {
+        test: /\.(jpe?g|png|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1024,
+              name: 'img/[name]_[hash:6].[ext]'
+            }
+          }
+        ]
+      }
+  ]
+}
+```
+
+### 6. 使用路由react router
 `yarn add react-router react-router-dom react-router-config`
 ```
 "dependencies": {
@@ -170,7 +203,7 @@ rules: [
   }
 ```
 - 添加路由页面
-由于**不支持嵌套路由** 将子路由和父路由平级处理 见/child和/child/info
+由于`react-router-config` renderRoutes **不支持嵌套路由**，将子路由和父路由平级处理 见/child和/child/info
 ```
 // routes.js
 import React from 'react'
@@ -204,8 +237,10 @@ const routes = [
 export default routes
 ```
 - root页面中添加路由渲染
+这里使用`HashRouter` 当然也可以使用`BrowserRouter`
 使用`react-router-config`工具集中处理routes 也可以使用一般方式如下
-```
+```html
+<!-- 一般方式 非集中路由 -->
 <HashRouter>
  <Route exact path="/child" component={Child} />
  <Route path="/child/info" component={Info} />
@@ -213,6 +248,7 @@ export default routes
 ```
 
 ```
+// 集中路由配置方式
 // root.js
 import React, { Suspense } from 'react'
 import { HashRouter, Switch } from 'react-router-dom'
@@ -243,47 +279,37 @@ export default Root
 ```
 
 - dynamic import & code split
-使用React.lazy和Suspend支持dynamic import 参见`./routes.js`和`./root.js`
-在webpack配置中添加splitChunkName, 这样可以在webpack打包时对动态加载的页面进行拆分
-```
-// build/webpack.base.js
-output: {
+  1. 使用React.lazy和Suspend支持dynamic import 参见`./routes.js`和`./root.js`
+  2. 在webpack配置中添加splitChunkName 这样可以在webpack打包时对动态加载的页面进行拆分
+  ```
+  // build/webpack.base.js
+  output: {
     chunkFilename: 'js/[name]_[hash:6].js'
   }
-```
+  ```
 
-### 6. 支持image等文件引用
-`yarn add file-loader url-loader -D`
-url-loader可以将文件优先转为base64 
-当超过设置的limit时优先使用file-loader处理，limit单位为bytes
-```
-"devDependencies": {
-    "file-loader": "^6.0.0",
-    "url-loader": "^4.1.0",
-}
+- history api
+  1. 创建history实例
+  ```
+  // utils/history.js
+  import { createHashHistory } from 'history'
 
-import venom from './assets/venom.png'
-<img src={venom} style={{ width: 60 }} />
-```
-webpack中添加rule配置
-```
-module: {
-  rules: [
-      {
-        test: /\.(jpe?g|png|gif)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 1024,
-              name: 'img/[name]_[hash:6].[ext]'
-            }
-          }
-        ]
-      }
-  ]
-}
-```
+  export default createHashHistory()
+  ```
+  
+   2. 将root.js中的HashRouter改为Router并添加参数history
+  ```
+  import { Router, Switch } from 'react-router-dom'
+  import history from './utils/history'
+
+  <Router history={history}>
+  ```
+  3. 使用history
+  ```
+  import history from './utils/history'
+
+  history.push('/child/info')
+  ```
 
 ### 7. webpack HMR - hot module replacement
 在webpack配置中添加devServer.hot: true
@@ -307,5 +333,5 @@ if (module.hot) {
   })
 }
 ```
-##### react-hot-loader (**TODO: 不起作用**)
-webpack提供的HMR可以无刷新更新页面但却无法保存页面中的state数据
+~~##### react-hot-loader (**TODO: 不起作用**)~~
+~~webpack提供的HMR可以无刷新更新页面但却无法保存页面中的state数据~~
