@@ -1,19 +1,31 @@
 import React, { Component } from 'react'
 import venom from '../assets/venom.png'
+import { connect } from 'react-redux'
+import { RootState, Dispatch, store } from '../store'
 
-class Info extends Component {
-  state = {
-    count: 0
-  }
+const mapState = (state: RootState) => ({
+  count: state.count
+})
 
+const dispatch = store.dispatch as Dispatch
+
+// const mapDispatch = (dispatch: Dispatch) => ({
+//   increment: (count: number) => dispatch.count.increment(count),
+//   incrementAsync: (count: number) => dispatch.count.incrementAsync(count)
+// })
+
+// type Props = ReturnType<typeof mapState> & ReturnType<typeof mapDispatch>
+type Props = ReturnType<typeof mapState>
+
+class Info extends Component<Props> {
   onChange = () => {
-    this.setState({
-      count: this.state.count + 1
-    })
+    // this.props.increment(2)
+    // this.props.incrementAsync(2)
+    dispatch.count.increment(2)
   }
 
   render() {
-    const { count } = this.state
+    const { count } = this.props
     return (
       <div onClick={this.onChange}>
         <span>hello info.js {count}</span>
@@ -23,4 +35,5 @@ class Info extends Component {
   }
 }
 
-export default Info
+// export default connect(mapState, mapDispatch as any)(Info)
+export default connect(mapState)(Info)
