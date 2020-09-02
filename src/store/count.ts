@@ -3,9 +3,9 @@ import { Dispatch, RootState } from './index'
 
 type CountState = number
 
-// const delay = async (second: number) => {
-//   return new Promise((resolve) => setTimeout(resolve, 1000 * second))
-// }
+const delay = async (second: number) => {
+  return new Promise((resolve) => setTimeout(resolve, 1000 * second))
+}
 
 export const count = createModel<CountState>()({
   state: 0,
@@ -18,10 +18,10 @@ export const count = createModel<CountState>()({
     async incrementAsync(payload: number, r) {
       const dispatch = d as Dispatch
       const rootState = r as RootState
-      // await delay(1)
-      // await delay(2)
-      console.log('This is current root state', rootState)
+      console.log('previous rootState', rootState)
+      await delay(1)
       await dispatch.count.increment(payload)
+      console.log('after increment')
     },
     async incrementAsync2(payload: number, r) {
       const dispatch = d as Dispatch

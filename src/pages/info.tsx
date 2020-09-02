@@ -20,8 +20,9 @@ type Props = ReturnType<typeof mapState>
 class Info extends Component<Props> {
   onChange = () => {
     // this.props.increment(2)
-    // this.props.incrementAsync(2)
-    dispatch.count.increment(2)
+    // dispatch.count.increment(2)
+    // dispatch.count.incrementAsync(2)
+    dispatch.count.incrementAsync2(1)
   }
 
   render() {

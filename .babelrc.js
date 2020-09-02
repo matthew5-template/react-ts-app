@@ -6,6 +6,7 @@ module.exports = {
   ],
   plugins: [
     // 'react-hot-loader/babel',
+    '@babel/plugin-transform-runtime',
     ['@babel/plugin-proposal-class-properties', { loose: true }]
   ]
 }
