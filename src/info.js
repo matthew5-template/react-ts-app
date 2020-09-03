@@ -6,7 +6,12 @@ class Info extends Component {
     count: 0
   }
 
-  onChange = () => {
+  delay(second: number) {
+    return new Promise((resolve) => setTimeout(resolve, 1000 * second))
+  }
+
+  onChange = async () => {
+    await this.delay(1)
     this.setState({
       count: this.state.count + 1
     })
