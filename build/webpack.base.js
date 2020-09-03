@@ -15,6 +15,9 @@ module.exports = (mode) => {
       publicPath: '/' // filename for html reference: prefix path => js/main.js
     },
     resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '../src')
+      },
       extensions: ['.ts', '.tsx', '.js', '.json']
     },
     module: {
