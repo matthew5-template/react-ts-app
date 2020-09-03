@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import style from './child.scss'
 import { Link } from 'react-router-dom'
-import history from '../utils/history'
+import history from '@/utils/history'
 
 const goToInfo = () => {
   // history.push('/child/info')
