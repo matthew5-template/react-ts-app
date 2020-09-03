@@ -13,6 +13,9 @@ module.exports = {
     publicPath: '/' // filename prefix path => js/main.js
   },
   resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '../src')
+    },
     extensions: ['.ts', '.tsx', '.js', '.json']
   },
   devServer: {
