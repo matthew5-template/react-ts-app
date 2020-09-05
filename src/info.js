@@ -6,7 +6,7 @@ class Info extends Component {
     count: 0
   }
 
-  delay(second: number) {
+  delay(second) {
     return new Promise((resolve) => setTimeout(resolve, 1000 * second))
   }
 
