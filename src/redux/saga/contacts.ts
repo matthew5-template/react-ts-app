@@ -1,4 +1,4 @@
-import { createAction, BaseSaga, ModelAction } from '@/redux-saga-easier'
+import { createAction, BaseSaga, ModelAction } from 'redux-saga-easy'
 import {
   all,
   call,
@@ -7,7 +7,7 @@ import {
   takeLatest,
   select,
   take
-} from '@/redux-saga-easier/effects'
+} from 'redux-saga/effects'
 import reducer from '@/redux/reducers/contacts'
 
 const delay = (second: number) => {
