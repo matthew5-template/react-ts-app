@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import venom from '../assets/venom.png'
 import { connect } from 'react-redux'
 import contactsSaga from '@/redux/saga/contacts'
-import contactsReducer from '@/redux/reducers/contacts'
 
 const mapStateToProps = (state: IStore.IRoot) => ({
   contact: state.contacts.contact
@@ -16,12 +15,13 @@ class Info extends Component<Props> {
   }
 
   onChange = async () => {
-    if (this.state.count % 2) {
-      await contactsSaga.calculateContacts('123', true)
-      console.log('after calculateContacts')
-    } else {
-      await contactsReducer.updateContacts('2333', true)
-    }
+    await contactsSaga.getContacts('111', true)
+    // if (this.state.count % 2) {
+    //   await contactsSaga.getContacts('123', true)
+    //   console.log('after calculateContacts')
+    // } else {
+    //   await contactsSaga.updateContacts('2333', true)
+    // }
 
     this.setState({
       count: this.state.count + 1

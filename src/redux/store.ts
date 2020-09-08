@@ -1,13 +1,11 @@
-import { createStore } from 'redux-saga-easy'
+import { createStore } from '@/redux-saga-easy'
 import { get, throttle } from 'lodash'
 // import { routerMiddleware } from 'react-router-redux'
 // import history from '@/utils/history'
 import globalStore from '@/redux/globalStore'
-import contactsSaga from './saga/contacts'
-import contacts from './reducers/contacts'
+import contacts from './saga/contacts'
 
-const sagaModels = [contactsSaga]
-const reducerModels = {
+const sagaModels = {
   contacts
 }
 
@@ -32,7 +30,6 @@ const otherMiddlewares = [] //[routerMiddleware(history)]
 
 const store = createStore(
   sagaModels,
-  reducerModels,
   errorHandler,
   disableDevTool,
   otherMiddlewares
