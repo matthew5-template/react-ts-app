@@ -14,18 +14,23 @@ class Info extends Component<Props> {
     count: 0
   }
 
-  onChange = async () => {
-    await contactsSaga.getContacts('111', true)
-    // if (this.state.count % 2) {
-    //   await contactsSaga.getContacts('123', true)
-    //   console.log('after calculateContacts')
-    // } else {
-    //   await contactsSaga.updateContacts('2333', true)
-    // }
-
-    this.setState({
-      count: this.state.count + 1
-    })
+  onChange = () => {
+    this.setState(
+      {
+        count: this.state.count + 1
+      },
+      async () => {
+        const { count } = this.state
+        // await contactsSaga.getContacts0(true)
+        await contactsSaga.getContacts(count, true)
+        // if (this.state.count % 2) {
+        //   await contactsSaga.getContacts('123', true)
+        //   console.log('after calculateContacts')
+        // } else {
+        //   await contactsSaga.updateContacts('2333', true)
+        // }
+      }
+    )
   }
 
   render() {
@@ -33,8 +38,9 @@ class Info extends Component<Props> {
     const { count } = this.state
     return (
       <div onClick={this.onChange}>
-        <span>hello info.js {contact}</span>
-        <span>count: {count}</span>
+        <span>
+          hello info.js {contact}, count: {count}
+        </span>
         <img src={venom} style={{ width: 60 }} />
       </div>
     )
