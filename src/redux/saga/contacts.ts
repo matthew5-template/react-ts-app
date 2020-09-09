@@ -5,7 +5,7 @@ import {
   createReducer0,
   SagaModel,
   ModelAction
-} from '@/redux-saga-easy'
+} from 'redux-saga-easy'
 import {
   all,
   call,
@@ -87,31 +87,22 @@ class Contacts extends SagaModel {
   })
 
   // TODO: babel plugin to compile
-  getContacts = createSaga(
-    (() => {
-      const gen = function* getContacts(
-        this: Contacts,
-        action: ModelAction<number>
-      ) {
-        // yield call(delay, 1)
-        const res = yield yield put(this.calculateContacts(action.payload))
-        yield put(this.updateContacts(res))
-        console.log('after updateContacts')
-      }
-      return gen.bind(this)
-    })()
-  )
+  getContacts = createSaga(function* getContacts(
+    this: Contacts,
+    action: ModelAction<number>
+  ) {
+    console.log('getContacts', this)
+    // yield call(delay, 1)
+    const res = yield yield put(this.calculateContacts(action.payload))
+    yield put(this.updateContacts(res))
+    console.log('after updateContacts')
+  })
 
-  getContacts0 = createSaga0(
-    (() => {
-      const gen = function* getContacts0(this: Contacts) {
-        const res = yield yield put(this.calculateContacts0())
-        yield put(this.updateContacts(res))
-        console.log('after updateContacts')
-      }
-      return gen.bind(this)
-    })()
-  )
+  getContacts0 = createSaga0(function* getContacts0(this: Contacts) {
+    const res = yield yield put(this.calculateContacts0())
+    yield put(this.updateContacts(res))
+    console.log('after updateContacts')
+  })
 }
 
 export default new Contacts()

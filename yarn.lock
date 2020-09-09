@@ -1522,6 +1522,11 @@ babel-plugin-dynamic-import-node@^2.3.3:
   dependencies:
     object.assign "^4.1.0"
 
+babel-plugin-generator-bind-this@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.npmjs.org/babel-plugin-generator-bind-this/-/babel-plugin-generator-bind-this-0.1.2.tgz#7a4b9c04cc86d8a099a5dffaf3ab0e778035af75"
+  integrity sha512-txM3nShrnf/1Phdm6n836laiV55NSXpdRVXwDaxsEHn/L6cyq0LmDWJJ712Sy5iuqqac6HVZGa9n0Z/Pd+F+HQ==
+
 balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
@@ -5225,10 +5230,10 @@ redux-devtools-extension@^2.13.8:
   resolved "https://registry.npmjs.org/redux-devtools-extension/-/redux-devtools-extension-2.13.8.tgz#37b982688626e5e4993ff87220c9bbb7cd2d96e1"
   integrity sha512-8qlpooP2QqPtZHQZRhx3x3OP5skEV1py/zUdMY28WNAocbafxdG2tRD1MWE7sp8obGMNYuLWanhhQ7EQvT1FBg==
 
-redux-saga-easy@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.npmjs.org/redux-saga-easy/-/redux-saga-easy-0.1.4.tgz#b6dec0aaca22c01300db5f46556c64a8a3db6cfc"
-  integrity sha512-7s7Fw4POkH9SI5mlqAVBkS1PPxHEmojN1jUp9lqp8k+LlE8fFPARRpSP7fqCEOhjP3OA/sjRtfVrh4oFENXY+g==
+redux-saga-easy@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.npmjs.org/redux-saga-easy/-/redux-saga-easy-0.1.5.tgz#808dedf62687182babeeaf06e5a948bd9bf92f38"
+  integrity sha512-w3ZmhwyoBCEsocInmoq5QoroXbe/vplSx6qT3VCZHAdl8KyF5wcQ/gLM3GYDG4ZK+mi3NE1+rWsdOpUnE5Zhbg==
   dependencies:
     redux "^4.0.5"
     redux-actions "^2.6.5"

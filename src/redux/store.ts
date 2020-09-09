@@ -1,4 +1,4 @@
-import { createStore } from '@/redux-saga-easy'
+import { createStore } from 'redux-saga-easy'
 import { get, throttle } from 'lodash'
 // import { routerMiddleware } from 'react-router-redux'
 // import history from '@/utils/history'
